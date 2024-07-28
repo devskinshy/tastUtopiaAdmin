@@ -66,6 +66,7 @@ function SideBar({open}) {
                 justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
+              to={index === 0 ? '/' : '/TestTablePage'}
             >
               <ListItemIcon
                 sx={{
@@ -91,6 +92,7 @@ function SideBar({open}) {
                 justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
+              to={index === 0 ? '/' : '/TestTablePage'}
             >
               <ListItemIcon
                 sx={{
