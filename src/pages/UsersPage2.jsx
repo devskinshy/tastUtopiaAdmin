@@ -19,10 +19,8 @@ import Button from '@mui/material/Button';
 
 import axios from "axios";
 
-
 export function test1(){
   return alert("test1");  
-
 };
 
 export function test2(temp){
@@ -52,10 +50,6 @@ export default function BasicTable() {
         setCode(result.code);
         setStatus(result.status);
         setLoading(false);
-
-        console.log(code);
-        console.log(status);
-        console.log(rows[1]);
       })
       .catch((error)=>{
         console.log("Store Error:: ", error.message);
@@ -70,24 +64,23 @@ export default function BasicTable() {
     navigate("/", { replace: true });
   };
   
-  // if(loading) {
-  //   return (
-    
-  //     <Box
-  //       sx={{
-  //         display: "flex",
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //         height: "100vh",
-  //         width: "100vw",
-  //       }}
-  //     >
-  //       <CircularProgress />
-  //     </Box>
-  //   );
-  // }
+  if(loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          width: "100vw",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
 
-  if(false){
+  if(code == 'SUCCESS'){
     return (
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -97,6 +90,7 @@ export default function BasicTable() {
               <TableCell align="right">별명</TableCell>
               <TableCell align="right">이메일</TableCell>
               <TableCell align="right">생성일자</TableCell>
+              <TableCell align="right">업데이트일자</TableCell>
               <TableCell align="right">사용자종류</TableCell>
               <TableCell align="right">사용여부</TableCell>
             </TableRow>
@@ -104,15 +98,16 @@ export default function BasicTable() {
           <TableBody>
             {rows.map((row) => (
               <TableRow
-                key={row.name}
+                key={row.seq}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" scope="row">{row.name}</TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
+                <TableCell component="th" scope="row">{row.userId}</TableCell>
+                <TableCell align="right">{row.nickName}</TableCell>
+                <TableCell align="right">{row.email}</TableCell>
+                <TableCell align="right">{row.embdate.createDate}</TableCell>
+                <TableCell align="right">{row.embdate.updateDate}</TableCell>
+                <TableCell align="right">{row.admin}</TableCell>
+                <TableCell align="right">{row.userStatus}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -120,8 +115,9 @@ export default function BasicTable() {
       </TableContainer>
     );
   }
-  if(false){
+  else {
     return (
+      //에러 코드에 따라 달라짐
       alert('100'),
       <Dialog
         open={error}
