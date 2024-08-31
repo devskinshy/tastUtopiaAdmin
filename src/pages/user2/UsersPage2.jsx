@@ -1,4 +1,3 @@
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,12 +11,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-
-import React, { useEffect, useState } from "react";
-
 import Button from '@mui/material/Button';
 
-import axios from "axios";
+import UserList from "UserList.container.jsx";
+
 
 export function test1(){
   return alert("test1");  
@@ -27,38 +24,15 @@ export function test2(temp){
   alert("test2"+temp);
 };
 
-export default function BasicTable() {
-  const [status, setStatus] = useState('');
-  const [code, setCode] = useState('');
-  const [rows, setRows] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  
-  const url ="http://3.35.212.57:8080/user/users";
+export default function users2() {
+  return (
+    <UserList/>
 
-  //컴포넌트가 마운트 됐을때  
-   useEffect(() => {
-      axios({
-        method: 'get'
-        ,url: url
-        //,params:{}
-        //,headers:{}
-      })
-      .then((response)=>{
-        const result = response.data;
-        setRows(result.data);
-        setCode(result.code);
-        setStatus(result.status);
-        setLoading(false);
-      })
-      .catch((error)=>{
-        console.log("Store Error:: ", error.message);
-        setRows(null);
-        setError(true);
-      })
-
-   },[])
+  )
   
+  
+
+ 
    const handleClose = () => {
     setError(false);
     navigate("/", { replace: true });
