@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import UserListUI from "../pages/user2/UserList.presenter.table.jsx";
+import UserListUI from "./UserList.presenter.table.jsx";
+import UserListError from "./UserList.presenter.error.jsx";
+import UserListLoading from "./UserList.presenter.loading.jsx";
 
 
 export default function usersList() {
@@ -33,9 +35,21 @@ export default function usersList() {
             setError(true);
         })
     },[])
+    
+    if(loading){
+        return(
+            <UserListLoading /> 
+        )
+    }
 
-    return(
-        <UserListUI rows={rows} /> 
-    )
+    if(code == 'SUCCESS'){
+        return(
+            <UserListUI rows={rows} /> 
+        )
+    }else{
+        //  return (
+        //      <UserListError status={status , error} /> 
+        //  )  
+    } 
 
 }
