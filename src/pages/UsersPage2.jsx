@@ -10,6 +10,8 @@ import Paper from '@mui/material/Paper';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import React, { useEffect, useState } from "react";
 
@@ -28,12 +30,12 @@ export function test2(temp){
 };
 
 export default function BasicTable() {
-  const [status, setStatus] = useState();
-  const [code, setCode] = useState();
-  const [rows1, setRows] = useState([]);
+  const [status, setStatus] = useState('');
+  const [code, setCode] = useState('');
+  const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState(false);
+  
   const url ="http://3.35.212.57:8080/user/users";
 
   //컴포넌트가 마운트 됐을때  
@@ -46,9 +48,14 @@ export default function BasicTable() {
       })
       .then((response)=>{
         const result = response.data;
-        alert(result.data);
-        alert(result.status);
-        alert(result.code);
+        setRows(result.data);
+        setCode(result.code);
+        setStatus(result.status);
+        setLoading(false);
+
+        console.log(code);
+        console.log(status);
+        console.log(rows[1]);
       })
       .catch((error)=>{
         console.log("Store Error:: ", error.message);
@@ -63,6 +70,23 @@ export default function BasicTable() {
     navigate("/", { replace: true });
   };
   
+  // if(loading) {
+  //   return (
+    
+  //     <Box
+  //       sx={{
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //         height: "100vh",
+  //         width: "100vw",
+  //       }}
+  //     >
+  //       <CircularProgress />
+  //     </Box>
+  //   );
+  // }
+
   if(false){
     return (
       <TableContainer component={Paper}>
@@ -115,21 +139,6 @@ export default function BasicTable() {
     );
   }
 
-  if (loading) {
-    return (
-      alert('5200'),
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          width: "100vw",
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    );
-  }
+
   
 }
