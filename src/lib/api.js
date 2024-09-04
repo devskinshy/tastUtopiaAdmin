@@ -49,11 +49,27 @@ const del = async (url) => {
   }
 };
 
+const postFormData = async (url, formData, headers = {}) => {
+  try {
+    const response = await axios.post(url, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        ...headers,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error posting form data:", error);
+    throw error;
+  }
+};
+
 const apiService = {
   get,
   post,
   put,
   delete: del,
+  postFormData,
 };
 
 export default apiService;
