@@ -6,6 +6,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
+import PropTypes from "prop-types";
 
 export default function UserTable({userData}) {
   const convertDatetime = (datetime) => {
@@ -57,3 +58,7 @@ export default function UserTable({userData}) {
     </TableContainer>
   );
 }
+
+UserTable.propTypes = {
+  userData: PropTypes.array.isRequired,
+};
