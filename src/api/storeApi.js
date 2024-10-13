@@ -1,9 +1,9 @@
 import {apiClient} from "../utils/axios.js";
 
 export const getStores = () => {
-  return apiClient.get("/store");
+  return apiClient.get("/stores");
 }
 
-export const getStore = (seq) => {
-  return apiClient.get(`/store/${seq}`);
+export const getStore = (storeId) => {
+  return apiClient.get(`/stores/${storeId}`);
 }

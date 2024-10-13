@@ -4,10 +4,3 @@ export const API_RESPONSE_CODE = {
   success: 200,
   error: 500
 }
-
-export const API_DATA_STATUS = {
-  init: "init",
-  loading: "loading",
-  success: "success",
-  error: "error"
-}

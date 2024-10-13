@@ -6,9 +6,9 @@ import DefaultTableCell from "../../ui/table/DefaultTableCell.jsx";
 import DefaultTableBody from "../../ui/table/DefaultTableBody.jsx";
 import DefaultTableContainer from "../../ui/table/DefaultTableContainer.jsx";
 
-function ReviewTable({status, data}) {
+function ReviewTable({isLoading, isError, data}) {
   return (
-    <DefaultTableContainer component={Paper} status={status}>
+    <DefaultTableContainer component={Paper} isLoading={isLoading} isError={isError}>
       <DefaultTable>
         <DefaultTableHead>
           <DefaultTableRow>

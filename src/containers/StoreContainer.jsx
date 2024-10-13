@@ -1,12 +1,16 @@
 import {getStores} from "../api/storeApi.js";
-import useApi from "../hooks/useApi.js";
 import StoreTable from "../components/pages/store/StoreTable.jsx";
+import {useQuery} from "@tanstack/react-query";
 
 function StoreContainer() {
-  const [status, data] = useApi(getStores);
+  const {data, isFetching, isError} = useQuery({
+    queryKey: ['store'],
+    queryFn: getStores,
+    initialData: []
+  })
 
   return (
-    <StoreTable status={status} data={data}/>
+    <StoreTable isLoading={isFetching} isError={isError} data={data}/>
   );
 }
 

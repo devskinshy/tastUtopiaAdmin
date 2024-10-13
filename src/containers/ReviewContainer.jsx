@@ -1,12 +1,17 @@
 import {getReviews} from "../api/reviewApi.js";
-import useApi from "../hooks/useApi.js";
 import ReviewTable from "../components/pages/review/ReviewTable.jsx";
+import {useQuery} from "@tanstack/react-query";
 
 function UserContainer() {
-  const [status, data] = useApi(getReviews);
+  const {data, isFetching, isError, ...temp} = useQuery({
+    queryKey: ['review'],
+    queryFn: getReviews,
+    initialData: []
+  })
 
+  console.log('reveiw', data, isFetching, isError, temp)
   return (
-    <ReviewTable status={status} data={data}/>
+    <ReviewTable isLoading={isFetching} isError={isError} data={data}/>
   );
 }
 

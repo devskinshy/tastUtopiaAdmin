@@ -1,16 +1,11 @@
 import {Paper, TableContainer} from "@mui/material";
-import {API_DATA_STATUS} from "../../../settings/constants.js";
 
-function DefaultTableContainer({status, children, ...props}) {
-  if (status === API_DATA_STATUS.init) {
-    return <div></div>
-  }
-
-  if (status === API_DATA_STATUS.error) {
+function DefaultTableContainer({isLoading, isError, children, ...props}) {
+  if (isError) {
     return <div>error</div>
   }
 
-  if (status === API_DATA_STATUS.loading) {
+  if (isLoading) {
     return <div>loading</div>
   }
 

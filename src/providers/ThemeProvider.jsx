@@ -1,8 +1,8 @@
-import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import {CssBaseline} from "@mui/material";
+import {theme} from "../utils/theme.js";
 
 export default function ThemeProvider({ children }) {
-  const theme = createTheme();
   return <MuiThemeProvider theme={theme}>
     <CssBaseline />
     {children}

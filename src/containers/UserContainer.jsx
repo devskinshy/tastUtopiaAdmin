@@ -1,12 +1,16 @@
 import {getUsers} from "../api/userApi.js";
-import useApi from "../hooks/useApi.js";
 import UserTable from "../components/pages/user/UserTable.jsx";
+import {useQuery} from "@tanstack/react-query";
 
 function UserContainer() {
-  const [status, data] = useApi(getUsers);
+  const {data, isFetching, isError} = useQuery({
+    queryKey: ['users'],
+    queryFn: getUsers,
+    initialData: []
+  })
 
   return (
-    <UserTable status={status} data={data}/>
+    <UserTable isLoading={isFetching} isError={isError} data={data}/>
   );
 }
 
