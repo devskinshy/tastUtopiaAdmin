@@ -19,13 +19,13 @@ apiClient.interceptors.response.use(
     const {data : responseData} = response;
 
     if (responseData.code !== API_RESPONSE_CODE.success) {
-      return Promise.reject(response);
+      return Promise.reject(response.data);
     }
 
     return responseData.data;
   },
   (error) => {
-    return Promise.reject(error);
+    return Promise.reject(error.response.data);
   }
 );
 

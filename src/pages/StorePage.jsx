@@ -1,6 +1,6 @@
 import StoreContainer from "../containers/StoreContainer.jsx";
 
-export default function HomePage() {
+export default function StorePage() {
   return (
     <StoreContainer/>
   )

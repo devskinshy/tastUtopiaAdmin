@@ -6,8 +6,8 @@ import ReviewContainer from "../containers/ReviewContainer.jsx";
 export default function HomePage() {
   return (
     <div>
-      <UserContainer/>
       <StoreContainer/>
+      <UserContainer/>
       <ReviewContainer/>
     </div>
   )

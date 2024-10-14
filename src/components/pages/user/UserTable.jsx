@@ -1,4 +1,4 @@
-import {Paper} from "@mui/material";
+import { Paper, Button, Box } from "@mui/material";
 import DefaultTable from "../../ui/table/DefaultTable.jsx";
 import DefaultTableHead from "../../ui/table/DefaultTableHead.jsx";
 import DefaultTableRow from "../../ui/table/DefaultTableRow.jsx";
@@ -9,6 +9,12 @@ import DefaultTableContainer from "../../ui/table/DefaultTableContainer.jsx";
 function UserTable({isLoading, isError, data}) {
   return (
     <DefaultTableContainer component={Paper} isLoading={isLoading} isError={isError}>
+      <Box display="flex" justifyContent="space-between" alignItems="center" padding="16px">
+        <h1>User Container</h1>
+        <Button variant="contained" color="primary">
+          유저 추가
+        </Button>
+      </Box>
       <DefaultTable>
         <DefaultTableHead>
           <DefaultTableRow>
