@@ -6,7 +6,6 @@ function StoreContainer() {
   const {data, isFetching, isError} = useQuery({
     queryKey: ['store'],
     queryFn: getStores,
-    initialData: []
   })
 
   return (

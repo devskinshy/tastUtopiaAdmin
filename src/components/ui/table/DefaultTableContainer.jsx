@@ -1,6 +1,7 @@
 import {Paper, TableContainer} from "@mui/material";
+import {PureComponent} from "react";
 
-function DefaultTableContainer({isLoading, isError, children, ...props}) {
+function DefaultTableContainer({isLoading, isError, table, ...props}) {
   if (isError) {
     return <div>error</div>
   }
@@ -9,9 +10,11 @@ function DefaultTableContainer({isLoading, isError, children, ...props}) {
     return <div>loading</div>
   }
 
+  console.log({table, Paper})
+
   return (
     <TableContainer component={Paper} {...props}>
-      {children}
+      {table()}
     </TableContainer>
   );
 }

@@ -3,13 +3,11 @@ import ReviewTable from "../components/pages/review/ReviewTable.jsx";
 import {useQuery} from "@tanstack/react-query";
 
 function UserContainer() {
-  const {data, isFetching, isError, ...temp} = useQuery({
+  const {data, isFetching, isError} = useQuery({
     queryKey: ['review'],
     queryFn: getReviews,
-    initialData: []
   })
 
-  console.log('reveiw', data, isFetching, isError, temp)
   return (
     <ReviewTable isLoading={isFetching} isError={isError} data={data}/>
   );
