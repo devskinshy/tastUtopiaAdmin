@@ -1,4 +1,9 @@
-import { getReview, getReviewByStoreId, getReviews } from "../api/reviewApi.js";
+import {
+  getReview,
+  getReviewByStoreId,
+  getReviewByUserId,
+  getReviews,
+} from "../api/reviewApi.js";
 import ReviewSearchForms from "../components/pages/review/ReviewSearchForms.jsx";
 import ReviewTable from "../components/pages/review/ReviewTable.jsx";
 import { useQuery } from "@tanstack/react-query";
@@ -19,32 +24,17 @@ function ReviewContainer() {
 
   const searchMutation = useStoreMutation(
     ({ storeId, userId }) => getReview(storeId, userId),
-    QUERY_KEYS.REVIEW,
-    {
-      onSuccess: (data) => {
-        if (!data) return;
-      },
-    }
+    QUERY_KEYS.REVIEW
   );
 
   const searchByStoreIdMutation = useStoreMutation(
     ({ storeId }) => getReviewByStoreId(storeId),
-    QUERY_KEYS.REVIEW,
-    {
-      onSuccess: (data) => {
-        if (!data) return;
-      },
-    }
+    QUERY_KEYS.REVIEW
   );
 
   const searchByUserIdMutation = useStoreMutation(
-    ({ userId }) => getReview(userId),
-    QUERY_KEYS.REVIEW,
-    {
-      onSuccess: (data) => {
-        if (!data) return;
-      },
-    }
+    ({ userId }) => getReviewByUserId(userId),
+    QUERY_KEYS.REVIEW
   );
 
   return (
