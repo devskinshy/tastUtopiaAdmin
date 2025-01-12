@@ -1,6 +1,7 @@
 import {QueryClientProvider} from "@tanstack/react-query";
 import {queryClient} from "../utils/query.js";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+import PropTypes from "prop-types";
 
 function QueryProvider({ children }) {
   return (
@@ -10,5 +11,9 @@ function QueryProvider({ children }) {
     </QueryClientProvider>
   );
 }
+
+QueryProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default QueryProvider;

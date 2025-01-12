@@ -4,6 +4,10 @@ export const getReviews = () => {
   return apiClient.get("/reviews");
 }
 
+export const getReviewBySeq = (seq) => {
+  return apiClient.get(`/reviews/${seq}`);
+}
+
 export const getReviewByUserId = (userId) => {
   return apiClient.get(`/reviews/users/${userId}`);
 }

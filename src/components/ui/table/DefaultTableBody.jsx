@@ -1,4 +1,5 @@
 import {TableBody} from "@mui/material";
+import PropTypes from "prop-types";
 
 function DefaultTableBody({children, ...props}) {
   return (
@@ -7,5 +8,9 @@ function DefaultTableBody({children, ...props}) {
     </TableBody>
   );
 }
+
+DefaultTableBody.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default DefaultTableBody;

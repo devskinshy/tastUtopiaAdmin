@@ -4,6 +4,6 @@ export const getStores = () => {
   return apiClient.get("/stores");
 }
 
-export const getStore = (storeId) => {
+export const getStoreByStoreId = (storeId) => {
   return apiClient.get(`/stores/${storeId}`);
 }

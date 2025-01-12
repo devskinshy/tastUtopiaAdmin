@@ -1,9 +1,9 @@
 import {apiClient} from "../utils/axios.js";
 
 export const getUsers = () => {
-  return apiClient.get("/users/users");
+  return apiClient.get("/users");
 }
 
-export const getUser = (seq) => {
+export const getUserBySeq = (seq) => {
   return apiClient.get(`/users/${seq}`);
 }

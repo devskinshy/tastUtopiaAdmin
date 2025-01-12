@@ -1,4 +1,4 @@
-import {useRoutes} from "react-router-dom";
+import {Navigate, useRoutes} from "react-router-dom";
 import HomePage from "../pages/HomePage.jsx";
 import UserPage from "../pages/UserPage.jsx";
 import StorePage from "../pages/StorePage.jsx";
@@ -11,7 +11,8 @@ export default function Router() {
       path: '/',
       element: <MainLayout/>,
       children: [
-        { index: true, element: <HomePage/> },
+        // { index: true, element: <HomePage/> },
+        {index: true, element: <Navigate to="/user" /> },
         { path: 'user', element: <UserPage />},
         { path: 'store', element: <StorePage />},
         { path: 'review', element: <ReviewPage />}

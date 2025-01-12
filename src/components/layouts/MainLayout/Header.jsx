@@ -23,7 +23,7 @@ function Header({open, handleDrawerToggle}) {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div">
-          Mini variant drawer
+          TastUtopia Admin
         </Typography>
       </Toolbar>
     </AppBar>
